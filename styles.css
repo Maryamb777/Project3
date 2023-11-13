@@ -6,16 +6,15 @@ body {
 }
 
 .quicksand {
-    font-family: 'Quicksand', sans-serif; /* Apply the custom font */
+    font-family: 'Quicksand', sans-serif;
 }
 
-/* New CSS for a more professional look */
 .professional-section {
-    background-color: #fff; /* Use a solid white background */
+    background-color: #fff;
     padding: 20px;
     margin-top: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .professional-section:hover {
@@ -23,23 +22,50 @@ body {
     transition: transform 0.3s ease-in-out;
 }
 
-header {
-    text-align: center;
+/* Add the provided CSS for hovering functionality */
+h1::before {
+  transform: scaleX(0);
+  transform-origin: bottom right;
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+h1:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
+h1::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  inset: 0 0 0 0;
+  background: hsl(200 100% 80%);
+  z-index: -1;
+  transition: transform .3s ease;
 }
 
-section {
-    margin-top: 20px;
+h1 {
+  position: relative;
+  font-size: 5rem;
+}
+
+html {
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+body {
+  min-block-size: 100%;
+  min-inline-size: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  display: grid;
+  place-content: center;
+  font-family: system-ui, sans-serif;
+}
+
+@media (orientation: landscape) {
+  body {
+    grid-auto-flow: column;
+  }
 }
